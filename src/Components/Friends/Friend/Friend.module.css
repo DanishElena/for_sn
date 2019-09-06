@@ -1,0 +1,16 @@
+.friend {
+    nmargin-bottom: 1rem;
+    margin-left: 1rem;
+    display: inline-block;
+}
+
+.ava {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.name {
+    font-size: 0.9rem;
+    margin: 0;
+}

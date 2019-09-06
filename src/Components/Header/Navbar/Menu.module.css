@@ -1,0 +1,22 @@
+.nav {
+    grid-area: n;
+    background-color: green;
+}
+
+.item {
+    color: white;
+    display: inline-block;
+    margin: 0 10px;
+    position: relative;
+    left: 500px;
+    top: 15px;
+}
+
+.item a {
+    color: white;
+    text-decoration: none;
+}
+
+.item a.active {
+    color: gold;
+}

@@ -1,0 +1,29 @@
+.dialogs {
+grid-area: c;
+background-color: cornflowerblue;
+    display: grid;
+grid-template-columns: 1fr 2fr 2fr;
+ }
+
+.dialog_items {
+    padding: 10px;
+}
+.messages {
+    padding: 10px;
+}
+
+.textarea {
+    margin: 0.3rem 0;
+}
+
+.button {
+    margin-bottom: 0.2rem;
+}
+
+.dialogs {
+
+}
+
+.message {
+
+}

@@ -1,0 +1,10 @@
+.content {
+    grid-area: s;
+    background-color: lightblue;
+}
+
+.friends {
+    text-align: center;
+    font-weight: bold;
+}
+
