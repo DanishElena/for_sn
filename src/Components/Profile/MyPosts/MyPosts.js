@@ -3,8 +3,6 @@ import s from './MyPosts.module.css';
 import Post from "./Post/Post";
 
 
-
-
 const MyPosts = (props) => {
 
     let PostsElements = props.posts.map(p => <Post message={p.message} likes={p.likes}/>)
@@ -12,14 +10,16 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        let text = newPostElement.current.value;
-        props.addPost(text);
-        props.updateNewPostText('');
+        props.dispatch({ type: 'ADD_POST'});
     }
 
     let OnPostChange = () => {
         let text = newPostElement.current.value;
-        props.updateNewPostText(text);
+        let action = {
+            type: 'UPDATE_NEW_POST_TEXT',
+            newText: text
+        }
+        props.dispatch(action);
     }
 
     return (
@@ -34,7 +34,7 @@ const MyPosts = (props) => {
                 </div>
             </div>
             <div className={s.posts}>
-                { PostsElements }
+                {PostsElements}
             </div>
         </div>
     )
