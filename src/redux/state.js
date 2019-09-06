@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_POST_TEXT =  'UPDATE_NEW_POST_TEXT';
+const UPDATE_NEW_MESSAGE_TEXT =  'UPDATE_NEW_MESSAGE_TEXT';
+const SEND_MESSAGE =  'SEND_MESSAGE';
+
 let store = {
     _state: {
         profilePage:
@@ -28,6 +33,7 @@ let store = {
                     {id: 4, name: 'Semen'},
                     {id: 5, name: 'Salvador'}
                 ],
+            newMessageText: '',
         },
 
         friendsArea: [
@@ -62,7 +68,7 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD_POST') {
+        if (action.type === ADD_POST) {
             let newPost = {
                 id: 6,
                 message: this._state.profilePage.newPostText,
@@ -71,13 +77,40 @@ let store = {
             this._state.profilePage.posts.push(newPost)
             this._state.profilePage.newPostText = '';
             this.callSubscriber(this._state)
-        } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText;
             this.callSubscriber(this._state)
+        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+            this._state.dialogsPage.newMessageText = action.body;
+            this.callSubscriber(this._state)
+        } else if (action.type === SEND_MESSAGE) {
+           let messageBody = this._state.dialogsPage.newMessageText;
+            this._state.dialogsPage.newMessageText = '';
+            this._state.dialogsPage.MessagesData.push({id: 7, message: messageBody})
+            this.callSubscriber(this._state)
         }
+
     }
+
 }
 
+//Action Creators
+export const addPostAction = () => ({type: ADD_POST});
+
+export const updateNewPost = (text) => {
+    return {
+        type: UPDATE_NEW_POST_TEXT,
+        newText: text
+    }
+}
+export const sendMessageAction = () => ({type:  SEND_MESSAGE});
+
+export const updateNewMessageTextAction = (messageBody) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_TEXT,
+        body: messageBody
+    }
+}
 
 window.store = store;
 export default store;

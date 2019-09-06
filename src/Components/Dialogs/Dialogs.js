@@ -1,18 +1,14 @@
 import React from 'react';
 import s from './Dialogs.module.css';
+import {sendMessageAction, updateNewMessageTextAction} from "../../redux/state";
 
 export const DialogItem =(props) => {
+
     return (
         <div className={s.dialog}>{props.name}</div>
     )
 }
 
-let newMessageElement = React.createRef();
-
-let addMessage = () => {
-    let message = newMessageElement.current.value;
-    alert(message);
-}
 export const Messages = (props) => {
     return (
         <div className={s.message}>
@@ -26,9 +22,20 @@ export const Messages = (props) => {
 
 
 const Dialogs = (props) => {
+debugger;
+    let onSendMessage = () => {
+        props.store.dispatch(sendMessageAction())
+    }
 
-    let DialogsElements = props.state.DialogsData.map(d => <DialogItem name={d.name} key={d.id} />);
-    let MessagesElements = props.state.MessagesData.map(m => <Messages key={m.id} message={m.message} />);
+    let onMessageChange = (e) => {
+        let newMessage = e.target.value;
+        props.store.dispatch(updateNewMessageTextAction(newMessage))
+    }
+    let state = props.store.getState().dialogsPage;
+
+    let DialogsElements = state.DialogsData.map(d => <DialogItem name={d.name} key={d.id} />);
+    let MessagesElements = state.MessagesData.map(m => <Messages key={m.id} message={m.message} />);
+    let newMessageText = state.newMessageText;
 
     return (
 
@@ -39,9 +46,13 @@ const Dialogs = (props) => {
 
             </div>
             <div className={s.messages}>
-                {MessagesElements}
-                <div> <textarea className={s.textarea} ref={newMessageElement}> </textarea> </div>
-                <div> <button onClick={addMessage} className={s.button}>Send message</button> </div>
+                <div>{MessagesElements}</div>
+                <div> <textarea value={newMessageText}
+                                className={s.textarea}
+                                onChange={onMessageChange}>
+
+                </textarea> </div>
+                <div> <button onClick={onSendMessage} className={s.button}>Send message</button> </div>
             </div>
         </div>
     )
