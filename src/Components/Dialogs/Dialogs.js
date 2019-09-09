@@ -23,15 +23,16 @@ export const Messages = (props) => {
 
 
 const Dialogs = (props) => {
-debugger;
+
     let onSendMessage = () => {
-        props.store.dispatch(sendMessageAction())
+        props.sendMessage();
     }
 
     let onMessageChange = (e) => {
         let newMessage = e.target.value;
-        props.store.dispatch(updateNewMessageTextAction(newMessage))
+        props.updateNewMessage(newMessage);
     }
+
     let state = props.store.getState().dialogsPage;
 
     let DialogsElements = state.DialogsData.map(d => <DialogItem name={d.name} key={d.id} />);

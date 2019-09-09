@@ -1,5 +1,6 @@
 import profileReducer from "./progfileReducer";
 import dialogsReducer from "./dialogsReducer";
+import friendsReduser from "./friendsReducer";
 
 let store = {
     _state: {
@@ -68,6 +69,7 @@ let store = {
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action); //обновление стейта с помощью редьюсера
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.friendsArea = friendsReduser(this_state.friendsArea, action);
         this.callSubscriber(this._state)  //уведомоление подписчика
     }
 }

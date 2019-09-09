@@ -1,9 +1,6 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
-import {addPostAction, updateNewPost} from "../../../redux/progfileReducer";
-
-
 
 const MyPosts = (props) => {
 
@@ -14,13 +11,15 @@ const MyPosts = (props) => {
 
 
     // dispatch action
-    let addPost = () => {
-        props.dispatch(addPostAction());
+    let onAddPost = () => {
+    //    props.dispatch(addPostAction());
+        props.addPost();
     }
 
     let OnPostChange = () => {
         let text = newPostElement.current.value;
-        props.dispatch(updateNewPost(text));
+       // props.dispatch(updateNewPost(text));
+        props.updateNewPostText(text);
     }
 
     return (
@@ -31,7 +30,7 @@ const MyPosts = (props) => {
                     <textarea ref={newPostElement} onChange={OnPostChange} value={props.newPostText}></textarea>
                 </div>
                 <div>
-                    <button className={s.button} onClick={addPost}>Add post</button>
+                    <button className={s.button} onClick={onAddPost}>Add post</button>
                 </div>
             </div>
             <div className={s.posts}>

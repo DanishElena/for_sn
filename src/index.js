@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
-import store from "./redux/state";
+import store from "./redux/reduxStore";
 
 let rerender =(state) => {
     ReactDOM.render(<BrowserRouter>
@@ -14,4 +14,8 @@ let rerender =(state) => {
 rerender(store.getState());
 
 
-store.subscribe(rerender);
+
+store.subscribe( () => {
+    let state = store.getState();
+    rerender(state);
+});
