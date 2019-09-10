@@ -7,27 +7,32 @@ import Music from "./Components/Music";
 import Settings from "./Components/Settings";
 import Menu from "./Components/Header/Navbar/Menu";
 import {Route} from 'react-router-dom';
-import Friends from "./Components/Friends/Friends";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
+import Friends from "./Components/Friends/Friends";
+import store1 from "./redux/store";
+import Users from "./Components/Users/Users";
 
 
-const App = (props) => {
+const App = () => {
 
     return (
         <div className='app-wrapper'>
             <Header/>
             <Menu/>
             <div className='app-wrapper-content'>
-                <Route path='/profile' render={() => <Profile store={props.store}/>}/>
+                <Route path='/profile' render={() => <Profile />}/>
                 <Route path='/dialogs' render={() =>
-                    <DialogsContainer store={props.store}/>}/>
+                    <DialogsContainer />}/>
+                    <Route path='/users' render={() =>
+                    <Users />}/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/settings' render={() => <Settings/>}/>
             </div>
-            <Friends state={props.state}/>
+            <Friends store1={store1}/>
         </div>
     )
 }
+
 
 export default App;

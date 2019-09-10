@@ -4,9 +4,12 @@ import Friend from "./Friend/Friend";
 
 
 
+
+
 const Friends= (props) => {
-debugger;
-    let FriendsItems = props.state.friendsArea.map(f => <Friend name={f.name} id={f.id} ava={f.ava}/>);
+
+
+    let FriendsItems = props.store1._state.friendsArea.map(f => <Friend name={f.name} id={f.id} ava={f.ava}/>);
 
     return (
 

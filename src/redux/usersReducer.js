@@ -12,7 +12,7 @@ let initialState = {
         'Cats everywhere!'
 };
 
-const profileReducer = (state = initialState, action) => {
+const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
@@ -47,4 +47,4 @@ export const updateNewPost = (text) => {
         newText: text
     }
 }
-export default profileReducer;
+export default usersReducer;

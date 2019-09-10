@@ -1,7 +1,5 @@
 import React from 'react';
 import s from './Dialogs.module.css';
-import {sendMessageAction, updateNewMessageTextAction} from "../../redux/dialogsReducer";
-
 
 export const DialogItem =(props) => {
 
@@ -32,8 +30,8 @@ const Dialogs = (props) => {
         let newMessage = e.target.value;
         props.updateNewMessage(newMessage);
     }
-
-    let state = props.store.getState().dialogsPage;
+debugger;
+    let state = props.dialogsPage;
 
     let DialogsElements = state.DialogsData.map(d => <DialogItem name={d.name} key={d.id} />);
     let MessagesElements = state.MessagesData.map(m => <Messages key={m.id} message={m.message} />);

@@ -4,18 +4,16 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import store from "./redux/reduxStore";
+import {Provider} from "react-redux";
+import * as serviceWorker from './serviceWorker';
 
-let rerender =(state) => {
-    ReactDOM.render(<BrowserRouter>
-        <App state={store.getState()} dispatch={store.dispatch.bind(store)} store={store} />
+
+ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={store}>
+            <App />
+        </Provider>
     </BrowserRouter>, document.getElementById('root'));
 
-}
-rerender(store.getState());
 
-
-
-store.subscribe( () => {
-    let state = store.getState();
-    rerender(state);
-});
+serviceWorker.unregister();

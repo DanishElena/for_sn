@@ -1,8 +1,8 @@
 import profileReducer from "./progfileReducer";
 import dialogsReducer from "./dialogsReducer";
-import friendsReduser from "./friendsReducer";
 
-let store = {
+
+let store1 = {
     _state: {
         profilePage:
             {
@@ -36,49 +36,31 @@ let store = {
         },
 
         friendsArea: [
-            {
-                id: 1,
-                name: 'Tomas',
-                ava: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2hjSKOW7NuVEDpVA9bzqDgGfyxR4c0OYKoyS19xL55ss9nPpI'
-            },
-            {
-                id: 2,
-                name: 'Silvester',
-                ava: 'https://static.greatbigcanvas.com/images/square/getty-images/bengal-cat-sitting-on-weathered-deck-,1102846.jpg?max=128'
-            },
-            {id: 3, name: 'Keks', ava: 'https://cdn140.picsart.com/268649060009201.jpg?c256x256'},
-            {
-                id: 4,
-                name: 'Semen',
-                ava: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfHaVUareLZhmdI3_DQQZZiYk-lbrFirA4EFzWcKDzJ1Pb7ROZ'
-            },
-            {id: 5, name: 'Salvador', ava: 'https://cdn140.picsart.com/257115989016202.png?c256x256'}
+            {id: 1, name: 'Tomas', ava: 'https://house-animals.ru/sites/default/files/media/user-1/trehcvetnaya-koshka-256.jpg'},
+            {id: 2, name: 'Silvester', ava: 'https://ranbus.fra1.cdn.digitaloceanspaces.com/images/avatars/2019/01/154745223793wK7X5xCi.jpg'},
+            {id: 3, name: 'Keks', ava: 'https://house-animals.ru/sites/default/files/media/user-1/grey-cat-256.jpg'},
+            {id: 4, name: 'Semen', ava: 'https://house-animals.ru/sites/default/files/media/user-1/redhead-cat-256.jpg'},
+            {id: 5, name: 'Salvador', ava: 'https://cats.expoforum.ru/uploads/location/thumbnail/sibirsk_01102018.png'}
         ],
-    },
-    callSubscriber() {
-        console.log('state changed');
-    },
 
-    getState() {
-        return this._state;
-    },
-    subscribe(observer) {
-        this.callSubscriber = observer;
-    },
+        callSubscriber() {
+            console.log('state changed');
+        },
 
-    dispatch(action) {
-        this._state.profilePage = profileReducer(this._state.profilePage, action); //обновление стейта с помощью редьюсера
-        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
-        this._state.friendsArea = friendsReduser(this_state.friendsArea, action);
-        this.callSubscriber(this._state)  //уведомоление подписчика
+        getState() {
+            return this._state;
+        },
+        subscribe(observer) {
+            this.callSubscriber = observer;
+        },
+
+        dispatch(action) {
+            this._state.profilePage = profileReducer(this._state.profilePage, action); //обновление стейта с помощью редьюсера
+            this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+            this.callSubscriber(this._state)  //уведомоление подписчика
+        }
     }
 }
 
-
-
-//Action Creators
-
-
-
-window.store = store;
-export default store;
+window.store1 = store1;
+export default store1;
