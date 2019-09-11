@@ -40,7 +40,7 @@ let store1 = {
             {id: 2, name: 'Silvester', ava: 'https://ranbus.fra1.cdn.digitaloceanspaces.com/images/avatars/2019/01/154745223793wK7X5xCi.jpg'},
             {id: 3, name: 'Keks', ava: 'https://house-animals.ru/sites/default/files/media/user-1/grey-cat-256.jpg'},
             {id: 4, name: 'Semen', ava: 'https://house-animals.ru/sites/default/files/media/user-1/redhead-cat-256.jpg'},
-            {id: 5, name: 'Salvador', ava: 'https://cats.expoforum.ru/uploads/location/thumbnail/sibirsk_01102018.png'}
+            {id: 5, name: 'Salvador', ava: 'https://www.stylist.co.uk/images/app/uploads/2017/10/24184627/d82c29b23a574d0de11df28351edde1e-256x256.jpg?w=256&h=256&fit=max&auto=format%2Ccompress'}
         ],
 
         callSubscriber() {

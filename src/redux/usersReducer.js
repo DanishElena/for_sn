@@ -1,50 +1,44 @@
-const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
-
+const FOLLOW = 'FOLLOW';
+const UNFOLLOW = 'UNFOLLOW';
+const SET_USERS = 'SET_USERS';
 
 let initialState = {
-    posts: [
-        {id: 1, message: "Hi, how are you?", likes: 10},
-        {id: 2, message: "Hi, it is my first post", likes: 12},
-        {id: 3, message: "I like cats!", likes: 14}
-    ],
-    newPostText:
-        'Cats everywhere!'
+    users: [ ]
 };
 
 const usersReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case ADD_POST:
-            let newPost = {
-                id: 6,
-                message: state.newPostText,
-                likes: 1
-            };
-            let stateCopy = {
+    switch(action.type) {
+        case FOLLOW:
+            return {
                 ...state,
-                posts: [...state.posts, newPost],
-                newPostText: ''
-              };
-           return stateCopy;
-
-        case UPDATE_NEW_POST_TEXT:
-          return {
-              ...state,
-              newPostText: action.newText
-          };
-
+                users: state.users.map( u =>  {
+                    if (u.id === action.userId) {
+                        return {...u, followed: true}
+                    }
+                    return u;
+                })
+            }
+        case UNFOLLOW:
+            return {
+                ...state,
+                users: state.users.map( u =>  {
+                    if (u.id === action.userId) {
+                        return {...u, followed: false}
+                    }
+                    return u;
+                })
+            }
+        case SET_USERS: {
+            return { ...state, users: [ ...state.users, ...action.users ]}
+        }
         default:
             return state;
-
     }
 }
 
-export const addPostAction = () => ({type: ADD_POST});
 
-export const updateNewPost = (text) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text
-    }
-}
+export const followAC = (userId) => ({type: FOLLOW, userId })
+export const unfollowAC = (userId) => ({type: UNFOLLOW, userId })
+export const setUsersAC = (users) => ({type: SET_USERS, users })
+
 export default usersReducer;

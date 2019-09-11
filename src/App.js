@@ -10,7 +10,7 @@ import {Route} from 'react-router-dom';
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import Friends from "./Components/Friends/Friends";
 import store1 from "./redux/store";
-import Users from "./Components/Users/Users";
+import UsersContainer from "./Components/Users/UsersContainer";
 
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
                 <Route path='/dialogs' render={() =>
                     <DialogsContainer />}/>
                     <Route path='/users' render={() =>
-                    <Users />}/>
+                    <UsersContainer />}/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/settings' render={() => <Settings/>}/>
