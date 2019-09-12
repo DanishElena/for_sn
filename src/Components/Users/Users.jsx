@@ -1,26 +1,27 @@
 import React from 'react';
 import styles from './users.module.css';
-import axios from "axios";
-
-debugger;
 
 let Users = (props) => {
-    if (props.users.length === 0) {
-        axios.get(`http://localhost:3000/users`, {
-            headers: {
-                "Content-type": "application/json"
-            }
-        })
-            .then(response => {
-                props.setUsers(response.data)
-            })
-    }
+    // let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    //
+    // let pages = [];
+    // for (let i = 1; i <= pageCount; i++) {
+    //     pages.push(i);
+    // }
 
 
+  //  let pages1 = pages.map( page => <span className={props.currentPage === page && styles.selectedPage} onClick={() => {props.onPageChange(page)}}>{page}</span> )
 
-    return <div >
+    return <div>
+        {/*<div>*/}
+        {/*    { pages.map( p => {*/}
+        {/*        return <span className={props.currentPage ===  p && styles.selectedPage }*/}
+        {/*                     onClick={(e) => { props.onPageChange(p); }}>{p}</span>*/}
+        {/*    })}*/}
+        {/*</div>*/}
+
         {
-            props.users.map(u => <div key={u.id} className={styles.user}>
+           props.users.map(u => <div key={u.id} className={styles.user}>
                 <span>
                     <div>
                          <img src={u.photoUrl} className={styles.userPhoto}/>
@@ -42,14 +43,14 @@ let Users = (props) => {
                         <div>{u.status}</div>
                     </span>
                     <span>
-                        <div>{"u.location.country"}</div>
-                        <div>{"u.location.city"}</div>
+                        <div>{u.location.country}</div>
+                        <div>{u.location.city}</div>
                     </span>
                 </span>
             </div>)
         }
     </div>
+
 }
-        export default Users;
 
-
+export default Users;

@@ -30,7 +30,7 @@ const Dialogs = (props) => {
         let newMessage = e.target.value;
         props.updateNewMessage(newMessage);
     }
-debugger;
+
     let state = props.dialogsPage;
 
     let DialogsElements = state.DialogsData.map(d => <DialogItem name={d.name} key={d.id} />);

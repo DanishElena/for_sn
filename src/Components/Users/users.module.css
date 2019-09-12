@@ -8,3 +8,7 @@
 .user {
     margin: 1rem 2rem;
 }
+
+.selectedPage {
+    font-weight: bold;
+}
