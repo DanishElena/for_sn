@@ -11,9 +11,10 @@ class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true);
         axios.get(`http://localhost:3000/users?_page=${this.props.currentPage}&_limit=${this.props.pageSize}`,
-            {headers: {"Content-Type": "application/json"}})
+            {headers: {"Content-Type": "application/json"}},
+        {withCredentials: true})
             .then(response => {
-                this.props.setUsers(response.data)
+                this.props.setUsers(response.data);
                 this.props.toggleIsFetching(false);
             })
     }
