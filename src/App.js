@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Header from "./Components/Header/Header";
 import News from "./Components/News";
 import Music from "./Components/Music";
 import Settings from "./Components/Settings";
@@ -11,13 +10,14 @@ import Friends from "./Components/Friends/Friends";
 import store1 from "./redux/store";
 import UsersContainer from "./Components/Users/UsersContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
+import HeaderContainer from "./Components/Header/Navbar/HeaderContainer";
 
 
 const App = () => {
 
     return (
         <div className='app-wrapper'>
-            <Header/>
+            <HeaderContainer/>
             <Menu/>
             <div className='app-wrapper-content'>
                 <Route path='/profile/:userId?' render={() => <ProfileContainer />}/>
