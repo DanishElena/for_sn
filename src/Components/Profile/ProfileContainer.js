@@ -5,17 +5,24 @@ import axios from "axios";
 import {connect} from "react-redux";
 import {setUserProfile, toggleIsFetching} from "../../redux/progfileReducer";
 import {Preloader} from "../Preloader";
+import {withRouter} from "react-router-dom";
 
 
 class ProfileContainer extends React.Component {
 
+
+
     componentDidMount() {
-        this.props.toggleIsFetching(true);
-        axios.get(`http://localhost:3000/users`,
+        let userId = this.props.match.params.userId;
+        if (!userId) {
+            userId = 3
+        }
+         this.props.toggleIsFetching(true);
+        axios.get("http://localhost:3000/users?id=" + userId,
             {headers: {"Content-Type": "application/json"}})
             .then(response => {
                 this.props.setUserProfile(response.data);
-                this.props.toggleIsFetching(false);
+                 this.props.toggleIsFetching(false);
             })
     }
 
@@ -35,4 +42,6 @@ let mapStateToProps = (state) => ({
 
 })
 
-export default connect(mapStateToProps, {setUserProfile, toggleIsFetching})(ProfileContainer);
+const withRouteContainer = withRouter(ProfileContainer)
+
+export default connect(mapStateToProps, {setUserProfile, toggleIsFetching})(withRouteContainer);
