@@ -4,7 +4,7 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 let initialState = {
-    users: [ ],
+    profile: [ ],
     posts: [
         {id: 1, message: "Hi, how are you?", likes: 10},
         {id: 2, message: "Hi, it is my first post", likes: 12},
@@ -36,7 +36,7 @@ const profileReducer = (state = initialState, action) => {
               newPostText: action.newText
           };
         case SET_USER_PROFILE: {
-            return { ...state, users: action.users}
+            return { ...state, profile: action.profile}
         }
         case TOGGLE_IS_FETCHING: {
             return { ...state, isFetching: action.isFetching}
@@ -56,6 +56,6 @@ export const updateNewPost = (text) => {
     }
 }
 
-export const setUserProfile = (users) => ({type: SET_USER_PROFILE, users});
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const toggleIsFetching = (isFetching)  => ({type: TOGGLE_IS_FETCHING , isFetching })
 export default profileReducer;

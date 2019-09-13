@@ -23,14 +23,14 @@ class ProfileContainer extends React.Component {
         return <>
             <div className={s.content}>
                 {this.props.isFetching ? <Preloader/> : null}
-                <Profile users={this.props.users}/>
+                <Profile profile={this.props.profile}/>
             </div>
         </>
     }
 }
 
 let mapStateToProps = (state) => ({
-    users: state.profilePage.users,
+    profile: state.profilePage.profile,
     isFetching: state.profilePage.isFetching
 
 })
