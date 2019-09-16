@@ -1,3 +1,6 @@
+import {usersAPI} from "../api/api";
+import {setUsers, toggleIsFetching} from "./usersReducer";
+
 const SET_USER_DATA = 'SET_USER_DATA';
 
 
@@ -22,6 +25,18 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
+
+export const getLoginToHeader = () => {
+    return (dispatch) => {
+        usersAPI.getLogin()
+            .then(data => {
+                if (data.resultCode === 0) {
+                    let {email, login, userId} = data.data;
+                   dispatch(setAuthUserData(email, login, userId));
+                }
+            })
+    }
+}
 
 export const setAuthUserData = (email, login, userId) => ({type: SET_USER_DATA, data: {email, login, userId} })
 

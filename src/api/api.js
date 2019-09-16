@@ -28,6 +28,14 @@ export const usersAPI = {
             .then(response => {
                 return response.data;
             });
+    },
+    follow(userId) {
+        return instance.put(`follow?${userId}`, {"resultCode": 0,
+        "usersId": `${userId}`})
+    },
+    unfollow(userId) {
+        return instance.put(`follow?${userId}`, {"resultCode": 1,
+            "usersId": `${userId}`})
     }
     }
 
