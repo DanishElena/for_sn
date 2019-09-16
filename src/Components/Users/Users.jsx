@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './users.module.css';
 import {NavLink} from "react-router-dom";
-import axios from "axios";
-import {follow} from "../../redux/usersReducer";
-import {usersAPI} from "../../api/api";
+
 
 // let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
 //
@@ -28,7 +26,7 @@ import {usersAPI} from "../../api/api";
 }
 debugger;
 let Users = (props) => {
-    return <div>
+    return <div className={styles.user}>
         {
             props.users.map(u => <div key={u.id}>
                 <span>

@@ -1,10 +1,13 @@
+import {usersAPI} from "../api/api";
+import {followSuccess, setUsers} from "./usersReducer";
+
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 let initialState = {
-    profile: [ ],
+    profile: [],
     posts: [
         {id: 1, message: "Hi, how are you?", likes: 10},
         {id: 2, message: "Hi, it is my first post", likes: 12},
@@ -27,19 +30,19 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 posts: [...state.posts, newPost],
                 newPostText: ''
-              };
-           return stateCopy;
+            };
+            return stateCopy;
 
         case UPDATE_NEW_POST_TEXT:
-          return {
-              ...state,
-              newPostText: action.newText
-          };
+            return {
+                ...state,
+                newPostText: action.newText
+            };
         case SET_USER_PROFILE: {
-            return { ...state, profile: action.profile}
+            return {...state, profile: action.profile}
         }
         case TOGGLE_IS_FETCHING: {
-            return { ...state, isFetching: action.isFetching}
+            return {...state, isFetching: action.isFetching}
         }
         default:
             return state;
@@ -57,5 +60,19 @@ export const updateNewPost = (text) => {
 }
 
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
-export const toggleIsFetching = (isFetching)  => ({type: TOGGLE_IS_FETCHING , isFetching })
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export default profileReducer;
+
+
+export const getProfileToContainer = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+
+        usersAPI.getProfile(userId)
+            .then(data => {
+                dispatch(setUserProfile(data));
+                dispatch(toggleIsFetching(false));
+            })
+    }
+}
+
