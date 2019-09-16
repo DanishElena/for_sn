@@ -1,5 +1,5 @@
 import {usersAPI} from "../api/api";
-import {setUsers, toggleIsFetching} from "./usersReducer";
+
 
 const SET_USER_DATA = 'SET_USER_DATA';
 
