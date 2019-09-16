@@ -3,18 +3,17 @@ import Header from "../Header";
 import axios from "axios";
 import {connect} from "react-redux";
 import {setAuthUserData} from "../../../redux/authReducer";
+import {usersAPI} from "../../../api/api";
 
 
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
-        axios.get("http://localhost:3000/login",
-            {headers: {"Content-Type": "application/json"}},
-           { withCredentials: true})
-            .then(response => {
+        usersAPI.getLogin()
+            .then(data => {
 
-                if (response.data.resultCode === 0) {
-                    let {email, login, userId} = response.data.data;
+                if (data.resultCode === 0) {
+                    let {email, login, userId} = data.data;
                     this.props.setAuthUserData(email, login, userId);
                 }
         })

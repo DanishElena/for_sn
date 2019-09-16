@@ -1,22 +1,19 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {follow, setCurrentPage, setUsers, toggleIsFetching, unfollow} from "../../redux/usersReducer";
-import axios from "axios";
+import {
+    follow, getUsers,
+    setCurrentPage,
+    unfollow
+} from "../../redux/usersReducer";
 import Users from "./Users";
 import {Preloader} from "../Preloader";
+
 
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.toggleIsFetching(true);
-        axios.get(`http://localhost:3000/users?_page=${this.props.currentPage}&_limit=${this.props.pageSize}`,
-            {headers: {"Content-Type": "application/json"}},
-        {withCredentials: true})
-            .then(response => {
-                this.props.setUsers(response.data);
-                this.props.toggleIsFetching(false);
-            })
+          this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     // onPageChange = pageNumber => {
@@ -58,4 +55,4 @@ class UsersContainer extends React.Component {
 
 
 
-export default connect(mapStateToProps, { follow, unfollow, setUsers, setCurrentPage, toggleIsFetching })(UsersContainer);
+export default connect(mapStateToProps, { follow, unfollow, setCurrentPage, getUsers })(UsersContainer);

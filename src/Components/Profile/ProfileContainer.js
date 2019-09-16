@@ -1,11 +1,11 @@
 import React from 'react';
 import s from './Profile.module.css';
 import Profile from "./Profile";
-import axios from "axios";
 import {connect} from "react-redux";
 import {setUserProfile, toggleIsFetching} from "../../redux/progfileReducer";
 import {Preloader} from "../Preloader";
 import {withRouter} from "react-router-dom";
+import {usersAPI} from "../../api/api";
 
 
 class ProfileContainer extends React.Component {
@@ -18,10 +18,9 @@ class ProfileContainer extends React.Component {
             userId = 3
         }
          this.props.toggleIsFetching(true);
-        axios.get("http://localhost:3000/users?id=" + userId,
-            {headers: {"Content-Type": "application/json"}})
-            .then(response => {
-                this.props.setUserProfile(response.data);
+       usersAPI.getProfile(userId)
+            .then(data => {
+                this.props.setUserProfile(data);
                  this.props.toggleIsFetching(false);
             })
     }
