@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './../Profile.module.css';
+import ProfileStatus from "./ProfileStatus";
 
 
 const ProfileInfo = (props) => {
@@ -10,23 +11,13 @@ const ProfileInfo = (props) => {
     // let profileItem = props.users.map(pr => <img src={pr.photoUrl} />)
         return (
             <div>
-                <img className={s.content_img} alt='info'
-                     src='https://sites.google.com/site/prirodanasevseegooglgfgf/_/rsrc/1463456237313/home/priroda_gory_nebo_ozero_oblaka_81150_1920x1080.jpg'/>
+                {/*<img className={s.content_img} alt='info'*/}
+                {/*     src='https://sites.google.com/site/prirodanasevseegooglgfgf/_/rsrc/1463456237313/home/priroda_gory_nebo_ozero_oblaka_81150_1920x1080.jpg'/>*/}
                 <div className={s.descriptionBlock}>
                     {props.profile.map(u => <div key={u.id}>
                         <div>
                             <div>
                                 <img src={u.photoUrl}/>
-                            </div>
-                            <div>
-                                {u.followed
-                                    ? <button onClick={() => {
-                                        props.unfollow(u.id)
-                                    }}>Unfollow</button>
-                                    : <button onClick={() => {
-                                        props.follow(u.id)
-                                    }}>Follow</button>}
-
                             </div>
                         </div>
                         <span>
@@ -42,6 +33,7 @@ const ProfileInfo = (props) => {
                     </div>)}
                     {/*{<img src={props.users.photoUrl} alt="no avatar"/>}*/}
                     {/*{profileItem}*/}
+                    <ProfileStatus status={"Hello everyone!"}/>
                 </div>
             </div>
         )
