@@ -4,7 +4,7 @@ import * as axios from "axios";
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'http://localhost:3000/',
-    headers:  { "Content-Type": "application/json" }
+    headers: {"Content-Type": "application/json"}
 });
 
 
@@ -28,14 +28,23 @@ export const usersAPI = {
             });
     },
     follow(userId) {
-        return instance.put(`follow?${userId}`, {"resultCode": 0,
-        "usersId": `${userId}`})
+        return instance.put(`follow?${userId}`, {
+            "resultCode": 0,
+            "usersId": `${userId}`
+        })
     },
     unfollow(userId) {
-        return instance.put(`follow?${userId}`, {"resultCode": 1,
-            "usersId": `${userId}`})
+        return instance.put(`follow?${userId}`, {
+            "resultCode": 1,
+            "usersId": `${userId}`
+        })
     }
+}
+
+
+export const profileAPI = {
+    updateStatus(status, userId) {
+        return instance.put(`users?${userId}`, { "data.status": `${status}`})
+            .then(response => response.data)
     }
-
-
-
+}

@@ -24,7 +24,7 @@ import {NavLink} from "react-router-dom";
 }
 {/*</div>*/
 }
-debugger;
+
 let Users = (props) => {
     return <div className={styles.user}>
         {

@@ -1,10 +1,11 @@
-import {usersAPI} from "../api/api";
-import {followSuccess, setUsers} from "./usersReducer";
+import {profileAPI, usersAPI} from "../api/api";
+
 
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+
 
 let initialState = {
     profile: [],
@@ -15,7 +16,9 @@ let initialState = {
     ],
     newPostText:
         'Cats everywhere!',
-    isFetching: false
+    isFetching: false,
+
+
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -72,6 +75,15 @@ export const getProfileToContainer = (userId) => {
             .then(data => {
                 dispatch(setUserProfile(data));
                 dispatch(toggleIsFetching(false));
+            })
+    }
+}
+
+export const updateUserStatus = (status, userId) => {
+    return (dispatch) => {
+        profileAPI.updateStatus(status, userId)
+            .then(data => {
+                dispatch(setUserProfile(data));
             })
     }
 }

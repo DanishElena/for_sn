@@ -23,7 +23,7 @@ const ProfileInfo = (props) => {
                         <span>
                     <span>
                         <div>{u.name}</div>
-                        <div>{u.status}</div>
+                        <ProfileStatus status={u.status} userId={u.id} updateUserStatus={props.updateUserStatus}/>
                     </span>
                     <span>
                         <div>{u.location.country}</div>
@@ -33,7 +33,7 @@ const ProfileInfo = (props) => {
                     </div>)}
                     {/*{<img src={props.users.photoUrl} alt="no avatar"/>}*/}
                     {/*{profileItem}*/}
-                    <ProfileStatus status={"Hello everyone!"}/>
+
                 </div>
             </div>
         )

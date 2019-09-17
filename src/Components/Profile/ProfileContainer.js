@@ -2,13 +2,13 @@ import React from 'react';
 import s from './Profile.module.css';
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {getProfileToContainer} from "../../redux/progfileReducer";
+import {getProfileToContainer, updateUserStatus} from "../../redux/profileReducer";
 import {Preloader} from "../Preloader";
 import {Redirect, withRouter} from "react-router-dom";
 import {WithAuthRedirect} from "../../HOC/AuthRedirect";
 import {compose} from "redux";
 
-
+debugger;
 
 class ProfileContainer extends React.Component {
 
@@ -19,7 +19,10 @@ class ProfileContainer extends React.Component {
         if (!userId) {
             userId = 3
         }
+
+
         this.props.getProfileToContainer(userId);
+
     }
 
     render() {
@@ -27,7 +30,7 @@ class ProfileContainer extends React.Component {
         return <>
             <div className={s.content}>
                 {this.props.isFetching ? <Preloader/> : null}
-                <Profile profile={this.props.profile}/>
+                <Profile profile={this.props.profile} updateUserStatus={this.props.updateUserStatus}/>
             </div>
         </>
     }
@@ -35,11 +38,12 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
-    isFetching: state.profilePage.isFetching
+    isFetching: state.profilePage.isFetching,
+
 })
 
 
 
-export default compose(connect(mapStateToProps, {getProfileToContainer}),
+export default compose(connect(mapStateToProps, {getProfileToContainer, updateUserStatus}),
     withRouter,
     WithAuthRedirect)(ProfileContainer);

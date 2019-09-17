@@ -1,4 +1,4 @@
-import profileReducer from "./progfileReducer";
+import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
 
 
