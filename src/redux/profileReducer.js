@@ -40,7 +40,7 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 newPostText: action.newText
-            };
+            }
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
@@ -79,12 +79,12 @@ export const getProfileToContainer = (userId) => {
     }
 }
 
-export const updateUserStatus = (status, userId) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status, userId)
-            .then(data => {
-                dispatch(setUserProfile(data));
-            })
-    }
-}
+// export const updateUserStatus = (status, userId) => {
+//     return (dispatch) => {
+//         profileAPI.updateStatus(status, userId)
+//             .then(data => {
+//                 dispatch(setUserProfile(data));
+//             })
+//     }
+// }
 

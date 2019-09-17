@@ -42,9 +42,19 @@ export const usersAPI = {
 }
 
 
-export const profileAPI = {
-    updateStatus(status, userId) {
-        return instance.put(`users?${userId}`, { "data.status": `${status}`})
-            .then(response => response.data)
-    }
-}
+// export const profileAPI = {
+//     updateStatus(status, userId) {
+//         return instance.put(`users/${userId}`,  {
+//             id: `${userId}`,
+//                 photoUrl: "https://house-animals.ru/sites/default/files/media/user-1/trehcvetnaya-koshka-256.jpg",
+//                 followed: false,
+//                 fullName: "Tomas",
+//                 status: `${status}`,
+//                 location: {
+//                 city: "Petropavl",
+//                     country: "Kazakhstan"
+//             }
+//         })
+//             .then(response => response.data)
+//     }
+// }
