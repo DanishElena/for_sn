@@ -1,8 +1,6 @@
-import {profileAPI, usersAPI} from "../api/api";
-
+import {usersAPI} from "../api/api";
 
 const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
@@ -14,11 +12,9 @@ let initialState = {
         {id: 2, message: "Hi, it is my first post", likes: 12},
         {id: 3, message: "I like cats!", likes: 14}
     ],
-    newPostText:
+    myPostText:
         'Cats everywhere!',
-    isFetching: false,
-
-
+    isFetching: false
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -26,21 +22,15 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST:
             let newPost = {
                 id: 6,
-                message: state.newPostText,
+                message: action.myPostText,
                 likes: 1
             };
             let stateCopy = {
                 ...state,
                 posts: [...state.posts, newPost],
-                newPostText: ''
             };
             return stateCopy;
 
-        case UPDATE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.newText
-            }
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
@@ -53,15 +43,7 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostAction = () => ({type: ADD_POST});
-
-export const updateNewPost = (text) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text
-    }
-}
-
+export const addPostAction = (myPostText) => ({type: ADD_POST, myPostText});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export default profileReducer;
