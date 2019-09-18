@@ -3,7 +3,7 @@
     width: auto;
     grid-template-areas: "h n n" "s c c";
     grid-template-columns: 2fr 2fr 8fr;
-    grid-template-rows:  50px 1fr;
+    grid-template-rows:  80px 1fr;
     margin: 0 auto;
 }
 
