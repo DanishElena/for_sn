@@ -21,6 +21,20 @@ export const usersAPI = {
                 return response.data;
             });
     },
+
+    login(login, password, rememberMe=false) {
+        return instance.post(`login`, {data: {login, password, rememberMe}})
+            .then(response => {
+            return response.data;
+        });
+    },
+    logout() {
+        return instance.delete(`login`)
+            .then(response => {
+                return response.data;
+            });
+    },
+
     getProfile(userId) {
         return instance.get(`users?id=${userId}`)
             .then(response => {

@@ -8,9 +8,7 @@
 }
 
 .loginBlock {
-    float: right;
     color: white;
-    position: relative;
-    top: 1rem;
-    text-decoration: none;
+     text-decoration: none;
+
 }
