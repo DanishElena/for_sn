@@ -24,7 +24,7 @@ const ProfileInfo = (props) => {
                         <span>
                     <span>
                         <div>{u.name}</div>
-                        <ProfileStatusWithHooks status={u.status} /* userId={u.id} updateUserStatus={props.updateUserStatus}*/ />
+                        <ProfileStatus status={u.status} /* userId={u.id} updateUserStatus={props.updateUserStatus}*/ />
                     </span>
                     <span>
                         <div>{u.location.country}</div>
