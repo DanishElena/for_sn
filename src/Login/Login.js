@@ -5,6 +5,7 @@ import {requiredField} from "../Validators/Validators";
 import {connect} from "react-redux";
 import {login} from "../redux/authReducer";
 import {Redirect} from "react-router-dom";
+import style from "../FormControls/FormControl.module.css"
 
 const LoginForm = (props) => {
 return (

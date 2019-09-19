@@ -56,6 +56,6 @@ class UsersContainer extends React.Component {
     }
 
 
-    export default compose(WithAuthRedirect,
+    export default compose(//WithAuthRedirect,
         connect(mapStateToProps, { follow, unfollow, setCurrentPage, getUsers }))
         (UsersContainer);

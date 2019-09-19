@@ -1,13 +1,15 @@
 import {usersAPI} from "../api/api";
 
 
+
 const SET_USER_DATA = 'SET_USER_DATA';
 
 
 let initialState = {
-    email: null,
-    login: null,
     userId: null,
+    login: null,
+    password: null,
+    rememberMe: false,
     isAuth: false
 };
 
@@ -16,8 +18,7 @@ const authReducer = (state = initialState, action) => {
         case SET_USER_DATA:
             return {
                 ...state,
-              ...action.payload,
-                isAuth: true
+              ...action.payload
             }
 
         default:
@@ -47,8 +48,8 @@ export const login = (login, password, rememberMe) => {
 
 export const logout = () => {
     return (dispatch) => {
-        usersAPI.logout()
-        dispatch(setAuthUserData(null, null, false));
+        usersAPI.logout();
+            dispatch(setAuthUserData(null, null, false, false));
             }
 }
 
