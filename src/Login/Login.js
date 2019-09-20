@@ -1,24 +1,19 @@
 import React from 'react';
-import {Field, reduxForm} from "redux-form";
-import {Input} from "../FormControls/FormControls";
-import {requiredField} from "../Validators/Validators";
+import {reduxForm} from "redux-form";
+import {createField, Input} from "../FormControls/FormControls";
 import {connect} from "react-redux";
 import {login} from "../redux/authReducer";
 import {Redirect} from "react-router-dom";
-import style from "../FormControls/FormControl.module.css"
+import {requiredField} from "../Validators/Validators";
 
-const LoginForm = (props) => {
+
+const LoginForm = (handleSubmit) => {
 return (
-    <form onSubmit={props.handleSubmit}>
-     <div>
-         <Field placeholder={'login'} name={'login'} component={Input} validate={[requiredField]}/>
-     </div>
-        <div>
-            <Field placeholder={'password'} name={'password'} component={Input} validate={[requiredField]} type={"password"}/>
-        </div>
-        <div>
-            <Field type={"checkbox"} name={'rememberMe'} component={Input}/> remember me
-        </div>
+    <form onSubmit={handleSubmit}>
+        {createField("Email", "email", [requiredField], Input)}
+        {createField("Password", "password", [requiredField], Input, {type: "password"})}
+        {createField(null, "rememberMe", [], Input, {type: "checkbox"}, "remember me")}
+
         <div>
             <button>Login</button>
         </div>

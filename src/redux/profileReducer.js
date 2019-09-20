@@ -50,14 +50,13 @@ export default profileReducer;
 
 
 export const getProfileToContainer = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
 
-        usersAPI.getProfile(userId)
-            .then(data => {
-                dispatch(setUserProfile(data));
-                dispatch(toggleIsFetching(false));
-            })
+        let data = await usersAPI.getProfile(userId);
+        dispatch(setUserProfile(data));
+
+        dispatch(toggleIsFetching(false));
     }
 }
 

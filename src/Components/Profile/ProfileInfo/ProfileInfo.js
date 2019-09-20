@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './../Profile.module.css';
 import ProfileStatus from "./ProfileStatus";
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks"; //переключаю компоненты
 
 
 const ProfileInfo = (props) => {
