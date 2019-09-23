@@ -25,10 +25,6 @@ export const Messages = (props) => {
 
 
 const Dialogs = (props) => {
-    const onSubmit = (formData) => {
-        console.log(formData)
-    }
-
 
     let addNewMessage = (value) => {
         props.sendMessage(value.newMessageText)
